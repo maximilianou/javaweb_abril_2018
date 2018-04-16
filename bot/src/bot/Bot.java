@@ -18,7 +18,7 @@ public class Bot {
             System.out.println(" tardo en cargar, pero trajo!!");
             InputStreamReader entradaTexto = new InputStreamReader(entradaBinaria);
             BufferedReader entrada = new BufferedReader(entradaTexto);
-            System.out.println(entrada.readLine());
+            //System.out.println(entrada.readLine());
             while (entrada.ready()) {
                 System.out.println(entrada.readLine());
             }
