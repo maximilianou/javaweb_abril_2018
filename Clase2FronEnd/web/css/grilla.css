@@ -1,3 +1,34 @@
 body {
-    background-color: peru; 
+    background-color: peru;
 }
+.contenedor{
+    background-color: burlywood;
+}
+.blanco{
+    background-color: gold;
+}
+.tinto{
+    background-color: darkred;
+}
+.vino{
+    background-color: tomato;
+}
+header{
+    grid-area: myArea;
+    background-color: red;
+    color: white;
+    font-size: xx-large;
+}
+footer{
+    background-color: black;
+    color: white;
+    font-size: xx-large;
+}
+.contenedor{
+    display: grid;
+    grid-template-areas: 'myArea myArea myArea';
+}
+
+
+
+
