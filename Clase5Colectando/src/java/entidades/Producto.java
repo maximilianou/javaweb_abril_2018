@@ -1,10 +1,17 @@
 package entidades;
 
-/**
- *
- * @author educacion
- */
 public class Producto implements Comparable<Producto>{
+
+    @Override
+    public int compareTo(Producto lat) {
+        return this.nombre.compareTo(lat.nombre);
+    }
+    
+    @Override
+    public String toString() {
+        return nombre + "-" + this.getElPropietario() ; 
+    }
+    
     
     public Producto(String nombre, Cliente elPropietario) {
         this.setNombre(nombre);
@@ -14,10 +21,6 @@ public class Producto implements Comparable<Producto>{
     private String nombre;
     private Cliente elPropietario;
     
-    @Override
-    public int compareTo(Producto lat) {
-        return this.nombre.compareTo(lat.nombre);
-    }
 
     
     public String getNombre() {
@@ -33,5 +36,6 @@ public class Producto implements Comparable<Producto>{
     public void setElPropietario(Cliente elPropietario) {
         this.elPropietario = elPropietario;
     }
+
 
 }
