@@ -1,5 +1,6 @@
 package pruebas;
 
+import comparadores.CriterioPorClienteDNI;
 import entidades.Cliente;
 import entidades.Producto;
 import java.util.*;
@@ -56,12 +57,28 @@ public class TestOrdenandoPorCriterio {
         System.out.println("5. --------------");
         System.out.println("Lista SIN OrdenaR:"
                 + listaProductos);
-
         Collections.sort(listaProductos);
+        //Collections.sort(arbolProductos); // no puedo ordenar sin o tengo indice del orden
         System.out.println("Lista Ordenada Naturalment:"
                 + listaProductos);
-
+        Collections.reverse(listaProductos);
+        System.out.println("Lista Ordenada Inversamente:"
+                + listaProductos);
         System.out.println("6. --------------");
+        // por DNI del cliente
+        CriterioPorClienteDNI criterioDNI = new CriterioPorClienteDNI();
+        Collections.sort(listaProductos, criterioDNI);
+        System.out.println("Orden por DNI:"
+                + listaProductos);
+        Collections.sort(listaProductos, 
+                Collections.reverseOrder(criterioDNI) );
+        System.out.println("Inverso por DNI:"
+                + listaProductos);
+        System.out.println("7. --------------");
+        // por apellido, desempata por nombre
+        Collections.sort(listaProductos);
+        
+        System.out.println("8. --------------");
 
         System.out.println("[OK] Por Criterio");
     }
