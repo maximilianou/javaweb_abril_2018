@@ -23,6 +23,7 @@ public class TestLocales {
         //   Comparator
 
         ArrayList<Local> locales = new ArrayList();
+        ArrayList<Local> localesDOS = new ArrayList();
         //Set<Local> locales = new TreeSet();
 
         Rubro electro = new Rubro();
@@ -65,6 +66,26 @@ public class TestLocales {
         locales.add(ferreSanTelmo);
         locales.add(electroSanTelmo);
 
+        localesDOS.add(electroSanTelmo);
+        localesDOS.add(sanitAlmagro);
+        localesDOS.add(sanitOnce);
+        localesDOS.add(ferreSanTelmo);
+        localesDOS.add(ferreOnce);
+
+
+        System.out.println("10. ------------- ");
+        System.out.println("Locales   : " + locales);
+        System.out.println("LocalesDOS: " + localesDOS);
+        System.out.println("11. ------------- ");
+        // modifico un objeto compartido por los dos arreglos
+        // el resultado imprime en ambos casos el nuevo dato
+        sanitOnce.setNombre("LOS HERMANOS 2");
+        System.out.println("Locales   : " + locales);
+        System.out.println("LocalesDOS: " + localesDOS);
+        System.out.println("12. ------------- ");
+        
+
+        
         System.out.println("1. ------------- ");
 //        for (int i = 0; i < locales.size(); i++) {
 //            System.out.println(" - : " + locales.get(i));
