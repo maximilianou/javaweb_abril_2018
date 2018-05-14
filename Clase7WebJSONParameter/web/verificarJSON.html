@@ -8,39 +8,79 @@
     <body>
         <div>VErificar JSON</div>
         <button id="consultaGustos" >Consultar JSON</button>
+        <button id="consultaGustosLista" >Consultar Lista JSON </button>
+        <button id="consultaGustosListaObjetos" >Consultar Lista Objetos JSON </button>
         <div id="msgOK">
         </div>
         <div id="msgERROR">
         </div>
-<script type="text/javascript">
-class TestGustos {
-    static inicializar() {
-        let btnConsultar = document.querySelector("#consultaGustos");
-        btnConsultar.setAttribute("onclick","TestGustos.consultaGustos()");
-    }
-    static consultaGustos() {
+        <script type="text/javascript">
+            class TestGustos {
+                static inicializar() {
+                    let btnConsultar = document.querySelector("#consultaGustos");
+                    btnConsultar.setAttribute("onclick", "TestGustos.consultaGustos()");
+                    let btnConsultarLista = document.querySelector("#consultaGustosLista");
+                    btnConsultarLista.setAttribute("onclick", "TestGustos.consultaGustosLista()");
+                    let btnConsultarListaObj = document.querySelector("#consultaGustosListaObjetos");
+                    btnConsultarListaObj.setAttribute("onclick", "TestGustos.consultaGustosListaObjeto()");
+                }
+                static consultaGustos() {
+                    const traer = async() => {
+                        let respuesta = await fetch("ConsultaGustos", {method: 'GET'});
+                        let textoRespuesta = JSON.parse(await respuesta.text());
+                        document.querySelector("#msgOK").innerHTML +=
+                                "<strong style='color:green'>" +
+                                textoRespuesta +
+                                "</strong> ";
+                    };
+                    traer()
+                            .catch(ex => {
+                                document.querySelector("#msgERROR").innerHTML +=
+                                        "<strong style='color:red'>ERROR!! " +
+                                        ex.message
+                                        + "</strong> ";
+                            });
+                }
+                static consultaGustosLista() {
+                    const traer = async() => {
+                        let respuesta = await fetch("ConsultarGustosLista", {method: 'GET'});
+                        let textoRespuesta = JSON.parse(await respuesta.text());
+                        document.querySelector("#msgOK").innerHTML +=
+                                "<strong style='color:green'>" + textoRespuesta[3] + "</strong> ";
+                        document.querySelector("#msgOK").innerHTML +=
+                                "<strong style='color:green'>" + textoRespuesta[1] + "</strong> ";
+                        document.querySelector("#msgOK").innerHTML +=
+                                "<strong style='color:green'>" + textoRespuesta[2] + "</strong> ";
+                        document.querySelector("#msgOK").innerHTML +=
+                                "<strong style='color:green'>" + textoRespuesta[0] + "</strong> ";
+                    };
+                    traer()
+                            .catch(ex => {
+                                document.querySelector("#msgERROR").innerHTML +=
+                                        "<strong style='color:red'>ERROR!! " + ex.message + "</strong> ";
+                            });
+                }
+                static consultaGustosListaObjeto() {
+                    const traer = async() => {
+                        let respuesta = await fetch("ConsultaGustosListaObjetos", {method: 'GET'});
+                        let textoRespuesta = JSON.parse(await respuesta.text());
+                        textoRespuesta.map( helado => {
+                          document.querySelector("#msgOK").innerHTML +=
+                                "<p style='color:green'>" 
+                                + helado.gusto + ":" 
+                                + helado.calorias + "</p> ";
+                        });
+                    };
+                    traer()
+                            .catch(ex => {
+                                document.querySelector("#msgERROR").innerHTML +=
+                                        "<strong style='color:red'>ERROR!! " + ex.message + "</strong> ";
+                            });
+                }
 
-        const traer = async() => {
-            let respuesta = await fetch("ConsultaGustos", {method: 'GET'});
-            let textoRespuesta = JSON.parse(await respuesta.text());
-        document.querySelector("#msgOK").innerHTML += 
-                 "<strong style='color:green'>" + 
-                 textoRespuesta + 
-                 "</strong> ";
-        };
-        traer()
-                .catch(ex => {
-                 document.querySelector("#msgERROR").innerHTML += 
-                 "<strong style='color:red'>ERROR!! "+
-                 ex.message
-                 +"</strong> ";
-                });
+            }
             
-            
-         
-    }
-}
-TestGustos.inicializar()
-</script>
+            TestGustos.inicializar();
+        </script>
     </body>
 </html>
