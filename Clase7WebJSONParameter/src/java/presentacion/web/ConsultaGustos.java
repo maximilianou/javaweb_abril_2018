@@ -15,9 +15,10 @@ public class ConsultaGustos extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
+        String textoAEnviar = "Funciona Gustos de Helados!!";
       resp.getWriter().print(
               convertir.toJson(
-                   "Funciona Gustos de Helados!!"
+                   textoAEnviar
               )
       );
     }
