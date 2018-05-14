@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Verificar</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>VErificar JSON</div>
+        <button id="consultaGustos" >Consultar JSON</button>
+        <div id="msgOK">
+        </div>
+        <div id="msgERROR">
+        </div>
+<script type="text/javascript">
+class TestGustos {
+    static inicializar() {
+        let btnConsultar = document.querySelector("#consultaGustos");
+        btnConsultar.setAttribute("onclick","TestGustos.consultaGustos()");
+    }
+    static consultaGustos() {
+
+        const traer = async() => {
+            let respuesta = await fetch("ConsultaGustos", {method: 'GET'});
+            let textoRespuesta = JSON.parse(await respuesta.text());
+        document.querySelector("#msgOK").innerHTML += 
+                 "<strong style='color:green'>" + 
+                 textoRespuesta + 
+                 "</strong> ";
+        };
+        traer()
+                .catch(ex => {
+                 document.querySelector("#msgERROR").innerHTML += 
+                 "<strong style='color:red'>ERROR!! "+
+                 ex.message
+                 +"</strong> ";
+                });
+            
+            
+         
+    }
+}
+TestGustos.inicializar()
+</script>
+    </body>
+</html>
