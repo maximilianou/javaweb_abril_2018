@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <div id="vistaUno"  class="vistas" ><h1>Uno</h1></div>
+        <div id="vistaDos"  class="vistas" >DOS</div>
+        <div id="vistaTres" class="vistas" >TRES</div>
+        
+        <script type="text/javascript">
+            
+alert( document.querySelector("#vistaUno") );
+alert( document.querySelector("#vistaUno").innerHTML );
+document.querySelector("#vistaUno").innerHTML = "<h2>vamo lo del fondo!!!</h2>";            
+alert( document.querySelector("#vistaUno").innerHTML );
+let  unavariable = "Variable Abelleira";
+document.querySelector("#vistaUno").innerHTML = unavariable;            
+alert( document.querySelector("#vistaUno").innerHTML );
+let  unTextoNuevo = `<strong>Campeon Groso Programador ${unavariable} </strong>`;
+document.querySelector("#vistaUno").innerHTML = unTextoNuevo;            
+        </script> 
+        
+    </body>
+</html>
